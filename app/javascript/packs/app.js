@@ -5,6 +5,8 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
+import setupCSRFToken from '../setupCSRFToken'
+setupCSRFToken()
 
 // Dependencies
 import Vue from 'vue'
@@ -17,12 +19,14 @@ Vue.use(VueRouter)
 // Components
 import App from '../app'
 import Courses from '../components/Courses'
+import CourseCreate from '../components/CourseCreate'
 import Index from '../components/Index'
 
 // Front-end routing
 const routes = [
   { path: '/', component: Index },
-  { path: '/courses', component: Courses }
+  { path: '/courses', component: Courses },
+  { path: '/courses/create', component: CourseCreate },
 ]
 
 const router = new VueRouter({

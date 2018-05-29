@@ -53,3 +53,11 @@
 .is-active .mdi-chevron-down {
     transform: rotate(180deg);
 }
+
+.default-enter-active, .default-leave-active {
+    transition: all .4s;
+}
+.default-enter, .default-leave-to {
+    opacity: 0;
+    transform: translateX(10vw);
+}

@@ -15,7 +15,7 @@
       <div class="navbar-menu">
         <div class="navbar-end">
           <b-dropdown position="is-bottom-left" class="navbar-item">
-            <button class="button is-warning" slot="trigger">
+            <button class="button is-warning has-icon" slot="trigger">
                 <b-icon icon="cogs" size="is-small"></b-icon>
                 <span>Manage</span>
                 <b-icon icon="chevron-down"></b-icon>
