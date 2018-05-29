@@ -13,6 +13,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Buefy from 'buefy'
 
+const lodash = require('lodash');
+window._ = lodash;
+
 Vue.use(Buefy)
 Vue.use(VueRouter)
 

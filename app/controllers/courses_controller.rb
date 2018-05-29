@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(params[:course])
+    @course = Course.new(article_params)
      
     if @course.save
       render :json => @course
@@ -16,4 +16,9 @@ class CoursesController < ApplicationController
       }
     end
   end
+
+  private
+    def article_params
+      params.require(:course).permit(:name, :description)
+    end
 end
