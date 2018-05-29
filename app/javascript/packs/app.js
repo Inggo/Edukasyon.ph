@@ -5,19 +5,39 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
+
+// Dependencies
 import Vue from 'vue'
-import App from '../app.vue'
+import VueRouter from 'vue-router'
+import Buefy from 'buefy'
 
-document.addEventListener('DOMContentLoaded', () => {
-  const el = document.body.appendChild(document.createElement('hello'))
-  const app = new Vue({
-    el,
-    render: h => h(App)
-  })
+Vue.use(Buefy)
+Vue.use(VueRouter)
 
-  console.log(app)
+// Components
+import App from '../app'
+import Courses from '../components/Courses'
+import Index from '../components/Index'
+
+// Front-end routing
+const routes = [
+  { path: '/', component: Index },
+  { path: '/courses', component: Courses }
+]
+
+const router = new VueRouter({
+  routes
 })
 
+// App initialization
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.body.appendChild(document.createElement('app'))
+  const app = new Vue({
+    el,
+    router,
+    render: app => app(App)
+  })
+})
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would

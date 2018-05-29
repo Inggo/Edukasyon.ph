@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <navigation></navigation>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Navigation from 'components/Navigation'
+
 export default {
   data: function () {
     return {
       message: "Hello Vue!"
     }
-  }
+  },
+  components: { Navigation }
 }
 </script>
 
