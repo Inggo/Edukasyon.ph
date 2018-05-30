@@ -10,10 +10,7 @@ class CoursesController < ApplicationController
     if @course.save
       render :json => @course
     else
-      render json: {
-        error: true,
-        message: 'Unable to create course'
-      }
+      render :json => { :errors => @course.errors }, :status => 422
     end
   end
 
