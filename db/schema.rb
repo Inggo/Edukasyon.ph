@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_152854) do
+ActiveRecord::Schema.define(version: 2018_05_30_162105) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "courses_professors", id: false, force: :cascade do |t|
+    t.integer "professor_id", null: false
+    t.integer "course_id", null: false
+    t.index ["course_id", "professor_id"], name: "index_courses_professors_on_course_id_and_professor_id", unique: true
   end
 
   create_table "professors", force: :cascade do |t|
