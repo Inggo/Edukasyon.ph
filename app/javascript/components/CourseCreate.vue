@@ -1,5 +1,6 @@
 <template>
   <section class="section">
+    <b-loading :is-full-page="true" :active="submitting"></b-loading>
     <main class="container">
       <p-header title="Create Course" :show-back="true"></p-header>
       <div class="columns">
@@ -57,7 +58,7 @@ export default {
           description: this.description
         })
         .then((response) => {
-          this.$snackbar.open('Successfully created course ' + response.data.name);
+          this.$snackbar.open('Successfully created Course #' + response.data.id);
           this.$router.go(-1);
         })
         .catch((error) => {

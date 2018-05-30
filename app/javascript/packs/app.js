@@ -23,6 +23,7 @@ Vue.use(VueRouter)
 import App from '../app'
 import Courses from '../components/Courses'
 import CourseCreate from '../components/CourseCreate'
+import CourseEdit from '../components/CourseEdit'
 import Index from '../components/Index'
 
 // Front-end routing
@@ -30,6 +31,7 @@ const routes = [
   { path: '/', component: Index },
   { path: '/courses', component: Courses },
   { path: '/courses/create', component: CourseCreate },
+  { path: '/courses/:id/edit', component: CourseEdit }
 ]
 
 const router = new VueRouter({

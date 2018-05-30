@@ -1,11 +1,17 @@
 class CoursesController < ApplicationController
+  def show
+    @course = Course.find(params[:id])
+
+    render :json => @course
+  end
+
   def index
     @courses = Course.all
     render :json => @courses
   end
 
   def create
-    @course = Course.new(article_params)
+    @course = Course.new(course_params)
      
     if @course.save
       render :json => @course
@@ -14,8 +20,15 @@ class CoursesController < ApplicationController
     end
   end
 
+  def update
+    @course = Course.find(params[:id])
+    @course.update!(course_params)
+
+    render :json => @course
+  end
+
   private
-    def article_params
+    def course_params
       params.require(:course).permit(:name, :description)
     end
 end
