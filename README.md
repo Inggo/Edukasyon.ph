@@ -1,24 +1,22 @@
-# README
+# Edukasyon.ph Full Stack Developer Interview Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+by Ramon Iñigo "Inggo" Espinosa @ <inggo.espinosa@gmail.com>
 
-Things you may want to cover:
+## README
 
-* Ruby version
+### Requirements:
 
-* System dependencies
+* ruby 2.3.1 (Ubuntu 16.04 stable)
+* rails 5.2
+* bundler
+* yarn
 
-* Configuration
+### Installation and running:
 
-* Database creation
+~~~~
+bin/bundle install
+bin/yarn install
+bin/rails db:migrate
+bin/rails serve
+~~~~
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
