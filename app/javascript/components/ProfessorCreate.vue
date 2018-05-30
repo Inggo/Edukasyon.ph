@@ -2,31 +2,32 @@
   <section class="section">
     <b-loading :is-full-page="true" :active="submitting"></b-loading>
     <main class="container">
-      <p-header title="Create Course" :show-back="true"></p-header>
-      <course-form
+      <p-header title="Create Professor" :show-back="true"></p-header>
+      <professor-form
         :name.sync="name"
-        :description.sync="description"
+        :bio.sync="bio"
         :submitting="submitting"
         :name-status="nameStatus"
         @submit="submit"
-      ></course-form>
+      ></professor-form>
     </main>
   </section>
 </template>
 
 <script>
 import PHeader from './common/Header'
+import ProfessorForm from './ProfessorForm'
 
 export default {
   data () {
     return {
       name: "",
       errors: {},
-      description: "",
+      bio: "",
       submitting: false
     }
   },
-  components: {PHeader},
+  components: {PHeader, ProfessorForm},
   computed: {
     nameStatus () {
       if (this.errors.name) {
@@ -42,12 +43,12 @@ export default {
     submit () {
       this.submitting = true;
 
-      axios.post('/api/courses', {
+      axios.post('/api/professors', {
           name: this.name,
-          description: this.description
+          bio: this.bio
         })
         .then((response) => {
-          this.$snackbar.open('Successfully created Course #' + response.data.id);
+          this.$snackbar.open('Successfully created Professor #' + response.data.id);
           this.$router.go(-1);
         })
         .catch((error) => {

@@ -26,6 +26,8 @@ import CourseCreate from '../components/CourseCreate'
 import CourseEdit from '../components/CourseEdit'
 import Index from '../components/Index'
 import Professors from '../components/Professors'
+import ProfessorCreate from '../components/ProfessorCreate'
+import ProfessorEdit from '../components/ProfessorEdit'
 
 // Front-end routing
 const routes = [
@@ -33,7 +35,9 @@ const routes = [
   { path: '/courses', component: Courses },
   { path: '/courses/create', component: CourseCreate },
   { path: '/courses/:id/edit', component: CourseEdit },
-  { path: '/professors', component: Professors }
+  { path: '/professors', component: Professors },
+  { path: '/professors/create', component: ProfessorCreate },
+  { path: '/professors/:id/edit', component: ProfessorEdit }
 ]
 
 const router = new VueRouter({

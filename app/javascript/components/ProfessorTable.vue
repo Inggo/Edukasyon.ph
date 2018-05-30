@@ -10,8 +10,8 @@
       <b-table-column field="name" label="Name" sortable>
         {{ props.row.name }}
       </b-table-column>
-      <b-table-column field="description" label="Description" sortable>
-        {{ props.row.description }}
+      <b-table-column field="bio" label="Bio" sortable>
+        {{ props.row.bio }}
       </b-table-column>
       <b-table-column label="Actions" numeric>
         <router-link class="button is-info is-small has-icon" :to="'/professors/' + props.row.id + '/edit'">

@@ -11,7 +11,7 @@
           </router-link>
         </template>
       </p-header>
-      <professor-table :courses="courses" :loading="loading" @confirm-delete="confirmDelete"></professor-table>
+      <professor-table :professors="professors" :loading="loading" @confirm-delete="confirmDelete"></professor-table>
     </main>
   </section>
 </template>
@@ -23,7 +23,7 @@ import ProfessorTable from './ProfessorTable'
 export default {
   data () {
     return {
-      courses: [],
+      professors: [],
       loading: false
     }
   },
