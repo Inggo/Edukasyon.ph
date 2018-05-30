@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   scope(:path => '/api') do
     resources :courses
+    resources :professors
   end
   get 'landing/index'
   root 'landing#index'

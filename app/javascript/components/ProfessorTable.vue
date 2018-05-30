@@ -1,6 +1,6 @@
 <template>
   <b-table
-    :data="courses"
+    :data="professors"
     :loading="loading"
   >
     <template slot-scope="props">
@@ -14,7 +14,7 @@
         {{ props.row.description }}
       </b-table-column>
       <b-table-column label="Actions" numeric>
-        <router-link class="button is-info is-small has-icon" :to="'/courses/' + props.row.id + '/edit'">
+        <router-link class="button is-info is-small has-icon" :to="'/professors/' + props.row.id + '/edit'">
           <b-icon icon="pencil" size="is-small"></b-icon>
           <span>Edit</span>
         </router-link>
@@ -33,7 +33,7 @@ import Empty from './Empty'
 
 export default {
   props: {
-    courses: {
+    professors: {
       type: Array,
       default () {
         return []
