@@ -6,7 +6,7 @@
       <professor-form
         :editing="true"
         :name.sync="name"
-        :bio.sync="description"
+        :bio.sync="bio"
         :submitting="submitting"
         :name-status="nameStatus"
         @submit="submit"
@@ -48,7 +48,7 @@ export default {
     axios.get('/api/professors/' + this.$route.params.id)
       .then((response) => {
         this.name = response.data.name
-        this.description = response.data.description
+        this.bio = response.data.bio
         this.loading = false
       })
       .catch((error) => {
