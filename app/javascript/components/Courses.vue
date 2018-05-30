@@ -69,20 +69,21 @@ export default {
 
       axios.delete('/api/courses/' + course.id)
         .then((response) => {
-          this.$snackbar.open(course.name + ' deleted!');
+          this.$snackbar.open('Course #' + course.id + ' deleted!');
           this.retrieveCourses();
         })
         .catch((error) => {
           console.log(error);
-        })
-        .finally(() => {
           this.loading = false;
         })
     },
-    retrieveCourses() {  
+    retrieveCourses() {
+      this.loading = true;
+
       axios.get('/api/courses')
         .then((response) => {
           this.courses = response.data;
+          this.loading = false;
         })
     }
   }

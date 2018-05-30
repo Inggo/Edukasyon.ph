@@ -13,7 +13,7 @@
           </b-field>
           <b-field>
             <p class="control">
-              <button class="button is-success has-icon" @click="submit" :loading="submitting">
+              <button class="button is-info has-icon" @click="submit" :loading="submitting">
                 <b-icon icon="pencil"></b-icon>
                 <span>Edit</span>
               </button>
