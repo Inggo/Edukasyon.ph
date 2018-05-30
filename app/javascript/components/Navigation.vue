@@ -25,6 +25,10 @@
                 <b-icon icon="school" size="is-small"></b-icon>
                 <span>Courses</span>
               </router-link>
+              <router-link to="/professors">
+                <b-icon icon="human-greeting" size="is-small"></b-icon>
+                <span>Professors</span>
+              </router-link>
             </b-dropdown-item>
           </b-dropdown>
         </div>

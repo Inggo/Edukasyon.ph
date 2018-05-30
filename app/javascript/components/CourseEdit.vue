@@ -3,30 +3,21 @@
     <b-loading :is-full-page="true" :active="loading"></b-loading>
     <main class="container">
       <p-header :title="'Edit Course #' + $route.params.id" :show-back="true"></p-header>
-      <div class="columns">
-        <div class="column is-three-fifths">
-          <b-field label="Name" :type="nameStatus.type" :message="nameStatus.message">
-            <b-input v-model="name" :disabled="submitting"></b-input>
-          </b-field>
-          <b-field label="Description">
-            <b-input v-model="description" type="textarea" :disabled="submitting"></b-input>
-          </b-field>
-          <b-field>
-            <p class="control">
-              <button class="button is-info has-icon" @click="submit" :loading="submitting">
-                <b-icon icon="pencil"></b-icon>
-                <span>Edit</span>
-              </button>
-            </p>
-          </b-field>
-        </div>
-      </div>
+      <course-form
+        :editing="true"
+        :name.sync="name"
+        :description.sync="description"
+        :submitting="submitting"
+        :name-status="nameStatus"
+        @submit="submit"
+      ></course-form>
     </main>
   </section>
 </template>
 
 <script>
 import PHeader from './common/Header'
+import CourseForm from './CourseForm'
 
 export default {
   data () {
@@ -38,7 +29,7 @@ export default {
       loading: false
     }
   },
-  components: {PHeader},
+  components: {PHeader, CourseForm},
   computed: {
     nameStatus () {
       if (_.has(this.errors, 'name') && _.isArray(this.errors.name)) {
