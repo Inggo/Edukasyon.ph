@@ -11,7 +11,7 @@
           </router-link>
         </template>
       </p-header>
-      <course-table :courses="courses" :loading="loading" @confirm-delete="confirmDelete"></course-table>
+      <course-table></course-table>
     </main>
   </section>
 </template>
@@ -21,47 +21,6 @@ import PHeader from './common/Header'
 import CourseTable from './CourseTable'
 
 export default {
-  data () {
-    return {
-      courses: [],
-      loading: false
-    }
-  },
-  components: {PHeader, CourseTable},
-  mounted () {
-    this.retrieveCourses();
-  },
-  methods: {
-    confirmDelete (course) {
-      this.$dialog.confirm({
-        message: 'Are you sure you want to delete course <b>' + _.escape(course.name) + '</b>?',
-        type: 'is-danger',
-        hasIcon: true,
-        onConfirm: () => this.delete(course)
-      })
-    },
-    delete (course) {
-      this.loading = true;
-
-      axios.delete('/api/courses/' + course.id)
-        .then((response) => {
-          this.$snackbar.open('Course #' + course.id + ' deleted!');
-          this.retrieveCourses();
-        })
-        .catch((error) => {
-          console.log(error);
-          this.loading = false;
-        })
-    },
-    retrieveCourses() {
-      this.loading = true;
-
-      axios.get('/api/courses')
-        .then((response) => {
-          this.courses = response.data;
-          this.loading = false;
-        })
-    }
-  }
+  components: {PHeader, CourseTable}
 }
 </script>

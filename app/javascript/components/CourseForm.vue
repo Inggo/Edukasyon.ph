@@ -7,12 +7,14 @@
       <b-field label="Description">
         <b-input :value="description" type="textarea" :disabled="submitting" v-model="description"></b-input>
       </b-field>
-      <professor-table
-        :show-actions="false"
-        :checkable="true"
-        :initial="professors"
-        @update-checked="updateChecked"
-      ></professor-table>
+      <b-field label="Professors">
+        <professor-table
+          :show-actions="false"
+          :checkable="true"
+          :initial="professors"
+          @update-checked="updateChecked"
+        ></professor-table>
+      </b-field>
       <b-field>
         <p class="control">
           <button
@@ -41,8 +43,8 @@ export default {
       checked: [],
       professors: [],
       name: "",
-      errors: {},
       description: "",
+      errors: {},
       submitting: false,
       loading: false
     }
@@ -99,7 +101,6 @@ export default {
 
     axios.get('/api/courses/' + this.$route.params.id)
       .then((response) => {
-        console.log(response);
         this.name = response.data.name
         this.description = response.data.description
         this.professors = response.data.professors

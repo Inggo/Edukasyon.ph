@@ -32,59 +32,23 @@
 
 <script>
 import Empty from './Empty'
+import checkableTable from '../mixins/checkableTable'
 
 export default {
   data () {
     return {
-      checkedRows: [],
       professors: [],
-      loading: false,
-      initialSet: false,
-      itemsLoaded: false
-    }
-  },
-  props: {
-    showActions: {
-      type: Boolean,
-      default: true
-    },
-    checkable: {
-      type: Boolean,
-      default: false
-    },
-    initial: {
-      type: Array,
-      default () {
-        return []
-      }
     }
   },
   components: {Empty},
+  mixins: [checkableTable],
+  computed: {
+    items () {
+      return this.professors;
+    }
+  },
   mounted () {
     this.retrieveProfessors();
-  },
-  watch: {
-    checkedRows (newChecked, oldChecked) {
-      this.$emit('update-checked', newChecked);
-    },
-    initial (newInitial, oldInitial) {
-      this.$nextTick(() => {
-        if (this.itemsLoaded && !this.initialSet) {
-          this.setInitial(newInitial);
-          this.initialSet = true;
-        } else {
-          this.initialSet = false;
-        }
-      })
-    },
-    itemsLoaded (newLoaded, oldLoaded) {
-      this.$nextTick(() => {
-        if (newLoaded && !this.initialSet) {
-          this.setInitial(this.initial);
-          this.initalSet = true;
-        }
-      })
-    }
   },
   methods: {
     confirmDelete (professor) {
@@ -95,16 +59,6 @@ export default {
         hasIcon: true,
         onConfirm: () => this.delete(professor)
       })
-    },
-    setInitial (initial) {
-      this.checkedRows = this.professors.filter((professor) => {
-        for (let i = 0; i < this.initial.length; i++) {
-          if (this.initial[i].id === professor.id) {
-            return true;
-          }
-        }
-        return false;
-      });
     },
     delete (professor) {
       this.loading = true;

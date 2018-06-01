@@ -11,7 +11,7 @@
           </router-link>
         </template>
       </p-header>
-      <professor-table :professors="professors" :loading="loading" @confirm-delete="confirmDelete"></professor-table>
+      <professor-table></professor-table>
     </main>
   </section>
 </template>
