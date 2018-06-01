@@ -21,52 +21,6 @@ import PHeader from './common/Header'
 import ProfessorTable from './ProfessorTable'
 
 export default {
-  data () {
-    return {
-      professors: [],
-      loading: false
-    }
-  },
-  components: {PHeader, ProfessorTable},
-  mounted () {
-    this.retrieveProfessors();
-  },
-  methods: {
-    confirmDelete (professor) {
-      this.$dialog.confirm({
-        message: 'Are you sure you want to delete professor <b>' + _.escape(professor.name) +
-          '</b> (#' + _.escape(professor.id) + ')?',
-        type: 'is-danger',
-        hasIcon: true,
-        onConfirm: () => this.delete(professor)
-      })
-    },
-    delete (professor) {
-      this.loading = true;
-
-      axios.delete('/api/professors/' + professor.id)
-        .then((response) => {
-          this.$snackbar.open('Professor #' + professor.id + ' deleted!');
-          this.retrieveProfessors();
-        })
-        .catch((error) => {
-          console.log(error);
-          this.loading = false;
-        })
-    },
-    retrieveProfessors() {
-      this.loading = true;
-
-      axios.get('/api/professors')
-        .then((response) => {
-          this.professors = response.data;
-          this.loading = false;
-        })
-        .catch((error) => {
-          this.$snackbar.open(error.response.data);
-          this.loading = false;
-        })
-    }
-  }
+  components: {PHeader, ProfessorTable}
 }
 </script>

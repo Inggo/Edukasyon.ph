@@ -1,61 +1,17 @@
 <template>
   <section class="section">
-    <b-loading :is-full-page="true" :active="submitting"></b-loading>
     <main class="container">
       <p-header title="Create Course" :show-back="true"></p-header>
-      <course-form
-        :name.sync="name"
-        :description.sync="description"
-        :submitting="submitting"
-        :name-status="nameStatus"
-        @submit="submit"
-      ></course-form>
+      <course-form></course-form>
     </main>
   </section>
 </template>
 
 <script>
 import PHeader from './common/Header'
+import CourseForm from './CourseForm'
 
 export default {
-  data () {
-    return {
-      name: "",
-      errors: {},
-      description: "",
-      submitting: false
-    }
-  },
-  components: {PHeader},
-  computed: {
-    nameStatus () {
-      if (this.errors.name) {
-        return {
-          type: 'is-danger',
-          message: 'Name ' + this.errors.name[0]
-        }
-      }
-      return { type: null, message: null }
-    }
-  },
-  methods: {
-    submit () {
-      this.submitting = true;
-
-      axios.post('/api/courses', {
-          name: this.name,
-          description: this.description
-        })
-        .then((response) => {
-          this.$snackbar.open('Successfully created Course #' + response.data.id);
-          this.$router.go(-1);
-        })
-        .catch((error) => {
-          this.errors = error.response.data.errors;
-          this.submitting = false;
-        })
-
-    }
-  }
+  components: {PHeader, CourseForm}
 }
 </script>

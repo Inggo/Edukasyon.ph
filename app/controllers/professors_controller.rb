@@ -1,20 +1,21 @@
 class ProfessorsController < ApplicationController
   def show
-    professor = Professor.find(params[:id])
+    professor = Professor.includes(:courses).find(params[:id])
 
-    render :json => professor
+    render json: professor.to_json(include: :courses)
   end
 
   def index
-    professors = Professor.all
-    render :json => professors
+    professors = Professor.includes(:courses).all
+
+    render json: professors.to_json(include: :courses)
   end
 
   def create
     professor = Professor.new(professor_params)
      
     if professor.save
-      render :json => professor
+      render json: professor.to_json(include: :courses)
     else
       render :json => { :errors => professor.errors }, :status => 422
     end
@@ -24,7 +25,7 @@ class ProfessorsController < ApplicationController
     professor = Professor.find(params[:id])
     professor.update!(professor_params)
 
-    render :json => professor
+    render json: professor.to_json(include: :courses)
   end
 
   def destroy
