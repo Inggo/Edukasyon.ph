@@ -1,8 +1,7 @@
 <template>
   <section class="section">
     <main class="container">
-      <p-header title="Rate Your Prof! (working name)"></p-header>
-      <h2 class="is-size-3">Courses</h2>
+      <p-header title="Courses"></p-header>
       <div class="columns is-multiline">
         <course-card
           v-for="course in courses"

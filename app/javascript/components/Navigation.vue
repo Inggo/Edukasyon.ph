@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <img src="http://via.placeholder.com/160x69" alt="">
+          <b-icon icon="school" type="is-secondary"></b-icon>
         </a>
 
         <a

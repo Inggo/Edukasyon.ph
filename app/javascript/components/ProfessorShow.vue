@@ -1,12 +1,17 @@
 <template>
   <section class="section">
     <main class="container" v-if="professor">
-      <p-header :title="name" :show-back="true"></p-header>
-      <p>
-        {{ bio }}
-      </p>
+      <p-header :title="course.name" :show-back="true"></p-header>
+
+      <h2 class="is-size-3">{{ name }}</h2>
+      <div class="box" v-if="professor.bio">
+        <p>
+          {{ professor.bio }}
+        </p>
+      </div>
+
       <div class="sub-section">
-        <h2 class="is-size-3">Reviews</h2>
+        <h2 class="is-size-4">Reviews</h2>
         <div class="columns">
           <div class="column is-narrow">
             Average for this course:
@@ -63,6 +68,16 @@ export default {
       return this.courseRatings.reduce((sum, review) => {
         return sum + review.rating;
       }, 0)/this.courseRatings.length;
+    },
+
+    course () {
+      if (!this.courses || this.courses.length == 0) {
+        return { name: null };
+      }
+
+      return this.courses.filter(course => {
+        return course.id == this.courseId;
+      })[0];
     },
 
     courseRatings () {

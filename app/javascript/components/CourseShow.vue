@@ -2,9 +2,12 @@
   <section class="section">
     <main class="container" v-if="course">
       <p-header :title="name" :show-back="true"></p-header>
-      <p>
-        {{ description }}
-      </p>
+
+      <div class="box" v-if="description">
+        <p>
+          {{ description }}
+        </p>
+      </div>
 
       <h2 class="is-size-3">Professors</h2>
       <div class="columns is-multiline">
