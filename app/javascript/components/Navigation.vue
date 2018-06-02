@@ -6,13 +6,20 @@
           <img src="http://via.placeholder.com/160x69" alt="">
         </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          @click="() => active = !active"
+          :class="{ 'is-active' : active }"
+        >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
         </a>
       </div>
-      <div class="navbar-menu">
+      <div class="navbar-menu" :class="{ 'is-active' : active }">
         <div class="navbar-end">
           <b-dropdown position="is-bottom-left" class="navbar-item">
             <button class="button is-warning has-icon" slot="trigger">
@@ -36,3 +43,13 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      active: false
+    }
+  }
+}
+</script>

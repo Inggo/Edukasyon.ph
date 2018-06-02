@@ -50,7 +50,7 @@
     transition: .2s transform;
 }
 
-.is-active .mdi-chevron-down {
+.dropdown.is-active .mdi-chevron-down {
     transform: rotate(180deg);
 }
 
