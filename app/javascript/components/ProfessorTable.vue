@@ -4,6 +4,8 @@
     :loading="loading"
     :checkable="checkable"
     :checked-rows.sync="checkedRows"
+    :paginated="true"
+    :per-page="showActions ? 100 : 5"
   >
     <template slot-scope="props">
       <b-table-column field="id" label="ID" sortable>
@@ -20,7 +22,7 @@
           <b-icon icon="pencil" size="is-small"></b-icon>
           <span>Edit</span>
         </router-link>
-        <button class="button is-danger is-small has-icon" @click="$emit('confirm-delete', props.row)">
+        <button class="button is-danger is-small has-icon" @click="confirmDelete(props.row)">
           <b-icon icon="delete" size="is-small"></b-icon>
           <span>Delete</span>
         </button>
@@ -33,15 +35,11 @@
 <script>
 import Empty from './Empty'
 import checkableTable from '../mixins/checkableTable'
+import retrievesProfessors from '../mixins/retrievesProfessors'
 
 export default {
-  data () {
-    return {
-      professors: [],
-    }
-  },
   components: {Empty},
-  mixins: [checkableTable],
+  mixins: [checkableTable, retrievesProfessors],
   computed: {
     items () {
       return this.professors;
@@ -70,20 +68,6 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          this.loading = false;
-        })
-    },
-    retrieveProfessors() {
-      this.loading = true;
-
-      axios.get('/api/professors')
-        .then((response) => {
-          this.professors = response.data;
-          this.loading = false;
-          this.itemsLoaded = true;
-        })
-        .catch((error) => {
-          this.$snackbar.open(error.response.data);
           this.loading = false;
         })
     }

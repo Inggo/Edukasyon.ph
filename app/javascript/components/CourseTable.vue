@@ -22,7 +22,7 @@
           <b-icon icon="pencil" size="is-small"></b-icon>
           <span>Edit</span>
         </router-link>
-        <button class="button is-danger is-small has-icon" @click="$emit('confirm-delete', props.row)">
+        <button class="button is-danger is-small has-icon" @click="confirmDelete(props.row)">
           <b-icon icon="delete" size="is-small"></b-icon>
           <span>Delete</span>
         </button>
@@ -35,15 +35,11 @@
 <script>
 import Empty from './Empty'
 import checkableTable from '../mixins/checkableTable'
+import retrievesCourses from '../mixins/retrievesCourses'
 
 export default {
-  data () {
-    return {
-      courses: [],
-    }
-  },
   components: {Empty},
-  mixins: [checkableTable],
+  mixins: [checkableTable, retrievesCourses],
   computed: {
     items () {
       return this.courses;
@@ -72,16 +68,6 @@ export default {
         .catch((error) => {
           console.log(error);
           this.loading = false;
-        })
-    },
-    retrieveCourses() {
-      this.loading = true;
-
-      axios.get('/api/courses')
-        .then((response) => {
-          this.courses = response.data;
-          this.loading = false;
-          this.itemsLoaded = true;
         })
     }
   }
