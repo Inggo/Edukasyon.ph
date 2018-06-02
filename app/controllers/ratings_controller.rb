@@ -1,19 +1,22 @@
-class RatingController < ApplicationController
+class RatingsController < ApplicationController
   def index
-    courses = Course.includes(:professors).all
+    ratings = Rating.where(course_id: params[:course_id])
+      .where(professor_id: params[:professor_id])
+      .all
 
-    render json: courses.to_json(include: :professors)
+    render json: ratings
   end
 
   def create
     rating = Rating.where(email: params[:email])
       .where(course_id: params[:course_id])
       .where(professor_id: params[:professor_id])
-      .first_or_initialize(locked: false)
-    
+      .first_or_initialize
+
+    rating.rating = params[:rating]
     rating.description = params[:description]
       
-    if course.save
+    if rating.save
       render json: rating
     else
       render :json => { :errors => rating.errors }, :status => 422
@@ -21,7 +24,7 @@ class RatingController < ApplicationController
   end
 
   private
-    def course_params
+    def rating_params
       params.require(:rating).permit(:email, :description, :course_id, :professor_id)
     end
 end

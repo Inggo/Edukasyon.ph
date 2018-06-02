@@ -35,20 +35,17 @@
 
 <script>
 import CourseTable from "./CourseTable";
+import retrievesProfessor from '../mixins/retrievesProfessor'
 
 export default {
   data () {
     return {
       checked: [],
-      courses: [],
-      name: "",
-      bio: "",
-      errors: {},
       submitting: false,
-      loading: false
     }
   },
   components: {CourseTable},
+  mixins: [retrievesProfessor],
   props: {
     editing: {
       type: Boolean,
@@ -98,17 +95,7 @@ export default {
     }
     this.loading = true;
 
-    axios.get('/api/professors/' + this.$route.params.id)
-      .then((response) => {
-        this.name = response.data.name
-        this.bio = response.data.bio
-        this.courses = response.data.courses
-        this.loading = false
-      })
-      .catch((error) => {
-        this.$snackbar.open('Unable to get Professor with ID #' + this.$route.params.id)
-        this.$route.go(-1)
-      })
+    this.retrieveProfessor(this.$route.params.id)
   },
   methods: {
     updateChecked (checked) {

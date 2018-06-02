@@ -65,3 +65,17 @@
     opacity: 0;
     transform: translateX(-10vw);
 }
+
+.sub-section {
+  margin: 2rem auto;
+}
+
+.course-card {
+  cursor: pointer;
+}
+
+.rating-review {
+  white-space: pre-wrap; 
+  word-wrap: break-word;
+  margin-bottom: 1.5rem;
+}

@@ -23,10 +23,12 @@ Vue.use(VueRouter)
 import App from '../app'
 import Courses from '../components/Courses'
 import CourseCreate from '../components/CourseCreate'
+import CourseShow from '../components/CourseShow'
 import CourseEdit from '../components/CourseEdit'
 import Index from '../components/Index'
 import Professors from '../components/Professors'
 import ProfessorCreate from '../components/ProfessorCreate'
+import ProfessorShow from '../components/ProfessorShow'
 import ProfessorEdit from '../components/ProfessorEdit'
 
 // Front-end routing
@@ -34,7 +36,9 @@ const routes = [
   { path: '/', component: Index },
   { path: '/courses', component: Courses },
   { path: '/courses/create', component: CourseCreate },
+  { path: '/courses/:id', component: CourseShow },
   { path: '/courses/:id/edit', component: CourseEdit },
+  { path: '/courses/:id/professor/:pid', component: ProfessorShow },
   { path: '/professors', component: Professors },
   { path: '/professors/create', component: ProfessorCreate },
   { path: '/professors/:id/edit', component: ProfessorEdit }
@@ -53,54 +57,3 @@ document.addEventListener('DOMContentLoaded', () => {
     render: app => app(App)
   })
 })
-
-// The above code uses Vue without the compiler, which means you cannot
-// use Vue to target elements in your existing html templates. You would
-// need to always use single file components.
-// To be able to target elements in your existing html/erb templates,
-// comment out the above code and uncomment the below
-// Add <%= javascript_pack_tag 'hello_vue' %> to your layout
-// Then add this markup to your html template:
-//
-// <div id='hello'>
-//   {{message}}
-//   <app></app>
-// </div>
-
-
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: {
-//       message: "Can you say hello?"
-//     },
-//     components: { App }
-//   })
-// })
-//
-//
-//
-// If the using turbolinks, install 'vue-turbolinks':
-//
-// yarn add 'vue-turbolinks'
-//
-// Then uncomment the code block below:
-//
-// import TurbolinksAdapter from 'vue-turbolinks';
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// Vue.use(TurbolinksAdapter)
-//
-// document.addEventListener('turbolinks:load', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: {
-//       message: "Can you say hello?"
-//     },
-//     components: { App }
-//   })
-// })

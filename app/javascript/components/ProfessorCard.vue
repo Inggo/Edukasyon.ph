@@ -1,9 +1,9 @@
 <template>
   <div class="column is-one-third">
-    <div class="card course-card" @click="$router.push('/courses/' + course.id)">
+    <div class="card professor-card" @click="$router.push('/courses/' + course.id + '/professor/' + professor.id)">
       <header class="card-header">
         <p class="card-header-title">
-          {{ course.name }}
+          {{ professor.name }}
         </p>
       </header>
     </div>
@@ -13,7 +13,8 @@
 <script>
 export default {
   props: {
-    course: Object
+    course: Object,
+    professor: Object
   }
 }
 </script>

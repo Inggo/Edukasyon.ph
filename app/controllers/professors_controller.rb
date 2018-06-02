@@ -1,8 +1,8 @@
 class ProfessorsController < ApplicationController
   def show
-    professor = Professor.includes(:courses).find(params[:id])
+    professor = Professor.includes(:courses).includes(:ratings).find(params[:id])
 
-    render json: professor.to_json(include: :courses)
+    render json: professor.to_json(include: [:courses, :ratings])
   end
 
   def index

@@ -2,7 +2,7 @@
   <section class="section">
     <main class="container">
       <p-header title="Rate Your Prof! (working name)"></p-header>
-      <div class="columns">
+      <div class="columns is-multiline">
         <course-card
           v-for="course in courses"
           :course="course"
