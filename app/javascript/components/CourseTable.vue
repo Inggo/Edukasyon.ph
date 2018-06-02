@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import Empty from './Empty'
-import checkableTable from '../mixins/checkableTable'
-import retrievesCourses from '../mixins/retrievesCourses'
+import Empty from './Empty';
+import checkableTable from '../mixins/checkableTable';
+import retrievesCourses from '../mixins/retrievesCourses';
 
 export default {
   components: {Empty},
@@ -57,6 +57,7 @@ export default {
         onConfirm: () => this.delete(course)
       })
     },
+
     delete (course) {
       this.loading = true;
 
@@ -68,7 +69,7 @@ export default {
         .catch((error) => {
           console.log(error);
           this.loading = false;
-        })
+        });
     }
   }
 }

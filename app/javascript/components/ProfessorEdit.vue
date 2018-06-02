@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import PHeader from './common/Header'
-import ProfessorForm from './ProfessorForm'
+import PHeader from './common/Header';
+import ProfessorForm from './ProfessorForm';
 
 export default {
   components: {PHeader, ProfessorForm}

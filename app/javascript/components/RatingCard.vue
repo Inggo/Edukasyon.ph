@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Stars from './common/Stars'
-import moment from 'moment'
+import Stars from './common/Stars';
+import moment from 'moment';
 
 export default {
   components: {Stars},

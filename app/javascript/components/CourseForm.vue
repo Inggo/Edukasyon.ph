@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import ProfessorTable from './ProfessorTable'
-import retrievesCourse from '../mixins/retrievesCourse'
+import ProfessorTable from './ProfessorTable';
+import retrievesCourse from '../mixins/retrievesCourse';
 
 export default {
   data () {
@@ -62,20 +62,23 @@ export default {
         }
       }
 
-      return { type: null, message: null }
+      return { type: null, message: null };
     },
+
     formData () {
       return {
         name: this.name,
         description: this.description,
         professors: this.checked.map((professor) => {
-          return professor.id
+          return professor.id;
         })
       }
     },
+
     method () {
       return this.editing ? 'patch' : 'post';
     },
+
     url () {
       return '/api/courses/' + (
         this.editing
@@ -83,11 +86,11 @@ export default {
           : ''
       );
     },
+
     action () {
       return this.editing
         ? 'updated'
-        : 'created'
-      ;
+        : 'created';
     }
   },
   mounted () {
@@ -95,12 +98,13 @@ export default {
       return;
     }
     
-    this.retrieveCourse(this.$route.params.id)
+    this.retrieveCourse(this.$route.params.id);
   },
   methods: {
     updateChecked (checked) {
       this.checked = checked;
     },
+
     submit () {
       this.submitting = true;
 

@@ -18,7 +18,7 @@ const retrievesProfessors = {
         .catch((error) => {
           this.$snackbar.open(error.response.data);
           this.loading = false;
-        })
+        });
     }
   }
 }

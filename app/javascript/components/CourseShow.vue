@@ -5,6 +5,8 @@
       <p>
         {{ description }}
       </p>
+
+      <h2 class="is-size-3">Professors</h2>
       <div class="columns is-multiline">
         <professor-card
           v-for="professor in course.professors"
@@ -19,15 +21,15 @@
 </template>
 
 <script>
-import PHeader from './common/Header'
-import ProfessorCard from './ProfessorCard'
-import retrievesCourse from '../mixins/retrievesCourse'
+import PHeader from './common/Header';
+import ProfessorCard from './ProfessorCard';
+import retrievesCourse from '../mixins/retrievesCourse';
 
 export default {
   components: {PHeader, ProfessorCard},
   mixins: [retrievesCourse],
   mounted () {
-    this.retrieveCourse(this.$route.params.id)
+    this.retrieveCourse(this.$route.params.id);
   },
   
 }

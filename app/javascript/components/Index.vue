@@ -2,6 +2,7 @@
   <section class="section">
     <main class="container">
       <p-header title="Rate Your Prof! (working name)"></p-header>
+      <h2 class="is-size-3">Courses</h2>
       <div class="columns is-multiline">
         <course-card
           v-for="course in courses"
@@ -15,14 +16,14 @@
 
 <script>
 import PHeader from './common/Header';
-import CourseCard from './CourseCard'
+import CourseCard from './CourseCard';
 import retrievesCourses from '../mixins/retrievesCourses';
 
 export default {
   components: {PHeader, CourseCard},
   mixins: [retrievesCourses],
   mounted () {
-    this.retrieveCourses()
+    this.retrieveCourses();
   }
 }
 </script>

@@ -14,7 +14,7 @@ const retrievesCourses = {
           this.courses = response.data;
           this.loading = false;
           this.itemsLoaded = true;
-        })
+        });
     }
   }
 }

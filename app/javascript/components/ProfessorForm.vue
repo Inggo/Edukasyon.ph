@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import CourseTable from "./CourseTable";
-import retrievesProfessor from '../mixins/retrievesProfessor'
+import CourseTable from './CourseTable';
+import retrievesProfessor from '../mixins/retrievesProfessor';
 
 export default {
   data () {
@@ -68,7 +68,7 @@ export default {
         name: this.name,
         bio: this.bio,
         courses: this.checked.map((course) => {
-          return course.id
+          return course.id;
         })
       }
     },
@@ -85,8 +85,7 @@ export default {
     action () {
       return this.editing
         ? 'updated'
-        : 'created'
-      ;
+        : 'created';
     }
   },
   mounted () {
@@ -101,6 +100,7 @@ export default {
     updateChecked (checked) {
       this.checked = checked;
     },
+
     submit () {
       this.submitting = true;
 

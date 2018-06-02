@@ -56,9 +56,11 @@ export default {
     range () {
       return _.range(1, 6)
     },
+
     validForm () {
-      return this.professorId == this.$route.params.pid && this.courseId == this.$route.params.id
+      return this.professorId == this.$route.params.pid && this.courseId == this.$route.params.id;
     },
+
     emailStatus () {
       if (_.has(this.errors, 'email') && _.isArray(this.errors.email)) {
         return {
@@ -69,6 +71,7 @@ export default {
 
       return { type: null, message: null }
     },
+
     ratingStatus () {
       if (_.has(this.errors, 'rating') && _.isArray(this.errors.rating)) {
         return {
@@ -77,8 +80,9 @@ export default {
         }
       }
 
-      return { type: null, message: null }
+      return { type: null, message: null };
     },
+
     formData () {
       return {
         email: this.email,
@@ -106,7 +110,7 @@ export default {
         })
         .finally(() => {
           this.submitting = false;
-        })
+        });
     },
   }
 }

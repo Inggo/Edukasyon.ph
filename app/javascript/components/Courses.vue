@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import PHeader from './common/Header'
-import CourseTable from './CourseTable'
+import PHeader from './common/Header';
+import CourseTable from './CourseTable';
 
 export default {
   components: {PHeader, CourseTable}

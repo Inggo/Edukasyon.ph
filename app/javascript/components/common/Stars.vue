@@ -18,8 +18,9 @@ export default {
   },
   computed: {
     range () {
-      return _.range(1, 6)
+      return _.range(1, 6);
     },
+    
     iconClass () {
       if (this.rating >= 3.5) {
         return 'is-success';
